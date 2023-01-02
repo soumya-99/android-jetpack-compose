@@ -31,7 +31,8 @@ class MainActivity : ComponentActivity() {
 //                    Greeting("Android")
 //                    BoxView()
 //                    ColView()
-                    LazyScrollableRow()
+//                    LazyScrollableRow()
+                    LazyScrollableCol()
                 }
             }
         }
@@ -94,6 +95,22 @@ fun LazyScrollableRow() {
     }
 }
 
+@Composable
+fun LazyScrollableCol() {
+    LazyColumn(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(10.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        // add single item
+        item { Text(text = "This is a string. ", fontSize = 30.sp) }
+        // add multiple items
+        items(50) { i -> Text(text = "Item no. $i ", fontSize = 30.sp) }
+    }
+}
+
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
@@ -101,6 +118,7 @@ fun DefaultPreview() {
 //        Greeting("Android")
 //        BoxView()
 //        ColView()
-        LazyScrollableRow()
+//        LazyScrollableRow()
+        LazyScrollableCol()
     }
 }
