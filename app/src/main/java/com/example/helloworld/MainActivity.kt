@@ -6,6 +6,8 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
@@ -28,7 +30,8 @@ class MainActivity : ComponentActivity() {
                 Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
 //                    Greeting("Android")
 //                    BoxView()
-                    ColView()
+//                    ColView()
+                    LazyScrollableRow()
                 }
             }
         }
@@ -64,17 +67,30 @@ fun ColView() {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(color = MaterialTheme.colorScheme.tertiary)
+            .background(color = MaterialTheme.colorScheme.secondary)
             .verticalScroll(rememberScrollState())
             .padding(10.dp),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(text = "First Item", color = MaterialTheme.colorScheme.onPrimary, fontSize = 30.sp)
+        Text(text = "First Item", color = MaterialTheme.colorScheme.onSecondary, fontSize = 30.sp)
         for (i in 0..50) {
-            Text(text = "Item $i", color = MaterialTheme.colorScheme.onPrimary, fontSize = 30.sp)
+            Text(text = "Item $i", color = MaterialTheme.colorScheme.onSecondary, fontSize = 30.sp)
         }
-        Text(text = "First Item", color = MaterialTheme.colorScheme.onPrimary, fontSize = 30.sp)
+        Text(text = "First Item", color = MaterialTheme.colorScheme.onSecondary, fontSize = 30.sp)
+    }
+}
+
+@Composable
+fun LazyScrollableRow() {
+    LazyRow(
+        modifier = Modifier
+            .padding(10.dp)
+    ) {
+        // add single item
+        item { Text(text = "This is a string. ", fontSize = 30.sp) }
+        // add multiple items
+        items(50) { i -> Text(text = "Item no. $i ", fontSize = 30.sp) }
     }
 }
 
@@ -84,6 +100,7 @@ fun DefaultPreview() {
     HelloWorldTheme {
 //        Greeting("Android")
 //        BoxView()
-        ColView()
+//        ColView()
+        LazyScrollableRow()
     }
 }
