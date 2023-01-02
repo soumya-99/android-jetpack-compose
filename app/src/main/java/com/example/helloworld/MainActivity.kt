@@ -5,11 +5,9 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.horizontalScroll
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -17,6 +15,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.helloworld.ui.theme.HelloWorldTheme
 
@@ -28,7 +27,8 @@ class MainActivity : ComponentActivity() {
                 // A surface container using the 'background' color from the theme
                 Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
 //                    Greeting("Android")
-                    BoxView()
+//                    BoxView()
+                    ColView()
                 }
             }
         }
@@ -46,7 +46,8 @@ fun BoxView() {
         modifier = Modifier
             .fillMaxSize()
             .background(color = MaterialTheme.colorScheme.primary)
-            .horizontalScroll(rememberScrollState()),
+            .horizontalScroll(rememberScrollState())
+            .padding(10.dp),
         horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically
     ) {
@@ -58,18 +59,31 @@ fun BoxView() {
     }
 }
 
-//@Composable
-//fun ColView() {
-//    Column {
-//
-//    }
-//}
+@Composable
+fun ColView() {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(color = MaterialTheme.colorScheme.tertiary)
+            .verticalScroll(rememberScrollState())
+            .padding(10.dp),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Text(text = "First Item", color = MaterialTheme.colorScheme.onPrimary, fontSize = 30.sp)
+        for (i in 0..50) {
+            Text(text = "Item $i", color = MaterialTheme.colorScheme.onPrimary, fontSize = 30.sp)
+        }
+        Text(text = "First Item", color = MaterialTheme.colorScheme.onPrimary, fontSize = 30.sp)
+    }
+}
 
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
     HelloWorldTheme {
 //        Greeting("Android")
-        BoxView()
+//        BoxView()
+        ColView()
     }
 }
