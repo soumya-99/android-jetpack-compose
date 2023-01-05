@@ -19,6 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -132,10 +133,14 @@ fun PlayWithFonts() {
     Text(
         text = "Hey There!",
         fontSize = 50.sp,
-        color = Color.Magenta,
-        fontStyle = FontStyle.Italic,
+        color = MaterialTheme.colorScheme.onPrimary,
+//        fontStyle = FontStyle.Italic,
         fontWeight = FontWeight.ExtraBold,
-        fontFamily = MyFontFamily
+//        fontFamily = MyFontFamily,
+        textAlign = TextAlign.Center,
+        modifier = Modifier
+            .fillMaxSize()
+            .background(color = MaterialTheme.colorScheme.primary),
     )
 }
 
