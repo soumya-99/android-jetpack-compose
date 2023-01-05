@@ -39,7 +39,8 @@ class MainActivity : ComponentActivity() {
 //                    LazyScrollableRow()
 //                    LazyScrollableCol()
 //                    DisplayNames()
-                    PlayWithFonts()
+//                    PlayWithFonts()
+                    ReallyLongText()
                 }
             }
         }
@@ -144,6 +145,11 @@ fun PlayWithFonts() {
     )
 }
 
+@Composable
+fun ReallyLongText() {
+    Text("Soumyadeep".repeat(20), maxLines = 2)
+}
+
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
@@ -154,6 +160,7 @@ fun DefaultPreview() {
 //        LazyScrollableRow()
 //        LazyScrollableCol()
 //        DisplayNames()
-        PlayWithFonts()
+//        PlayWithFonts()
+        ReallyLongText()
     }
 }
