@@ -23,6 +23,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.helloworld.ui.theme.HelloWorldTheme
+import com.example.helloworld.ui.theme.MyFontFamily
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -133,7 +134,8 @@ fun PlayWithFonts() {
         fontSize = 50.sp,
         color = Color.Magenta,
         fontStyle = FontStyle.Italic,
-        fontWeight = FontWeight.ExtraBold
+        fontWeight = FontWeight.ExtraBold,
+        fontFamily = MyFontFamily
     )
 }
 
