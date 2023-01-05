@@ -16,6 +16,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -32,7 +35,9 @@ class MainActivity : ComponentActivity() {
 //                    BoxView()
 //                    ColView()
 //                    LazyScrollableRow()
-                    LazyScrollableCol()
+//                    LazyScrollableCol()
+//                    DisplayNames()
+                    PlayWithFonts()
                 }
             }
         }
@@ -111,6 +116,27 @@ fun LazyScrollableCol() {
     }
 }
 
+@Composable
+fun DisplayNames() {
+    val names = listOf<String>("Soumya", "Sumit", "Soham", "Golu")
+    Column {
+        for (name in names) {
+            Text(text = "Hello $name", fontSize = 30.sp)
+        }
+    }
+}
+
+@Composable
+fun PlayWithFonts() {
+    Text(
+        text = "Hey There!",
+        fontSize = 50.sp,
+        color = Color.Magenta,
+        fontStyle = FontStyle.Italic,
+        fontWeight = FontWeight.ExtraBold
+    )
+}
+
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
@@ -119,6 +145,8 @@ fun DefaultPreview() {
 //        BoxView()
 //        ColView()
 //        LazyScrollableRow()
-        LazyScrollableCol()
+//        LazyScrollableCol()
+//        DisplayNames()
+        PlayWithFonts()
     }
 }
