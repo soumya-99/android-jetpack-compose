@@ -9,6 +9,8 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.text.selection.DisableSelection
+import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -40,7 +42,8 @@ class MainActivity : ComponentActivity() {
 //                    LazyScrollableCol()
 //                    DisplayNames()
 //                    PlayWithFonts()
-                    ReallyLongText()
+//                    ReallyLongText()
+                    SelectableText()
                 }
             }
         }
@@ -150,6 +153,21 @@ fun ReallyLongText() {
     Text("Soumyadeep".repeat(20), maxLines = 2)
 }
 
+@Composable
+fun SelectableText() {
+    Column {
+        SelectionContainer {
+            Column {
+                Text(text = "Hey! I'm a selectable text... Hold me to select.", fontSize = 20.sp)
+                DisableSelection {
+                    Text(text = "Hey! I'm inside disable-selection, which is inside of selection-container text... You can't select me.", fontSize = 20.sp)
+                }
+            }
+        }
+        Text(text = "I'm a normal text.", fontSize = 20.sp)
+    }
+}
+
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
@@ -161,6 +179,7 @@ fun DefaultPreview() {
 //        LazyScrollableCol()
 //        DisplayNames()
 //        PlayWithFonts()
-        ReallyLongText()
+//        ReallyLongText()
+        SelectableText()
     }
 }
