@@ -3,15 +3,12 @@ package com.example.helloworld
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.background
-import androidx.compose.foundation.horizontalScroll
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.selection.DisableSelection
 import androidx.compose.foundation.text.selection.SelectionContainer
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -34,7 +31,9 @@ class MainActivity : ComponentActivity() {
         setContent {
             HelloWorldTheme {
                 // A surface container using the 'background' color from the theme
-                Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
+                Surface(
+                    modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background
+                ) {
 //                    Greeting("Android")
 //                    BoxView()
 //                    ColView()
@@ -43,7 +42,8 @@ class MainActivity : ComponentActivity() {
 //                    DisplayNames()
 //                    PlayWithFonts()
 //                    ReallyLongText()
-                    SelectableText()
+//                    SelectableText()
+                    BoxModel()
                 }
             }
         }
@@ -96,8 +96,7 @@ fun ColView() {
 @Composable
 fun LazyScrollableRow() {
     LazyRow(
-        modifier = Modifier
-            .padding(10.dp)
+        modifier = Modifier.padding(10.dp)
     ) {
         // add single item
         item { Text(text = "This is a string. ", fontSize = 30.sp) }
@@ -160,13 +159,51 @@ fun SelectableText() {
             Column {
                 Text(text = "Hey! I'm a selectable text... Hold me to select.", fontSize = 20.sp)
                 DisableSelection {
-                    Text(text = "Hey! I'm inside disable-selection, which is inside of selection-container text... You can't select me.", fontSize = 20.sp)
+                    Text(
+                        text = "Hey! I'm inside disable-selection, which is inside of selection-container text... You can't select me.",
+                        fontSize = 20.sp
+                    )
                 }
             }
         }
         Text(text = "I'm a normal text.", fontSize = 20.sp)
     }
 }
+
+@Composable
+fun BoxModel() {
+    Box(
+        modifier = Modifier
+            .fillMaxHeight(0.5f)
+            .fillMaxWidth(0.5f)
+            .background(color = Color.Green)
+    ) {
+        Text(text = "This is an outer box.")
+        Box(
+            modifier = Modifier
+                .fillMaxHeight(0.5f)
+                .fillMaxWidth(0.5f)
+                .background(color = Color.Red)
+        ) {
+            Text(
+                text = "This is inner box.",
+                color = Color.White,
+                modifier = Modifier.align(Alignment.Center),
+            )
+        }
+        Text(
+            text = "I'm outside of the inner box.",
+            modifier = Modifier.align(Alignment.Center),
+        )
+    }
+}
+
+// silk oreo
+// soci haven
+// e1 v1
+// e2 v2
+// 1 -1
+// -1 1
 
 @Preview(showBackground = true)
 @Composable
@@ -180,6 +217,7 @@ fun DefaultPreview() {
 //        DisplayNames()
 //        PlayWithFonts()
 //        ReallyLongText()
-        SelectableText()
+//        SelectableText()
+        BoxModel()
     }
 }
