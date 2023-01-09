@@ -187,12 +187,11 @@ fun BoxModel() {
         ) {
             Text(
                 text = "This is inner box.",
-                color = Color.White,
                 modifier = Modifier.align(Alignment.Center),
             )
         }
         Text(
-            text = "I'm outside of the inner box.",
+            text = "I'm outside of inner box.",
             modifier = Modifier.align(Alignment.Center),
         )
     }
